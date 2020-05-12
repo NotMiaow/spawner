@@ -6,6 +6,7 @@
 #include <future>
 #include <chrono>
 #include <string>
+#include <fstream>
 
 #include "basic_lib.h"
 
@@ -29,7 +30,7 @@ private:
 
     std::string m_name;
     const int WAIT_DELAY = 50;
-    const int RELAUNCH_DELAY = 1500;
+    const int RELAUNCH_DELAY = 500;
 };
 
 #endif

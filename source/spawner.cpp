@@ -29,7 +29,14 @@ void Spawner::Loop()
         {
             std::cout << std::endl << m_name << " is down. Restarting in a moment." << std::endl;
             std::this_thread::sleep_for(std::chrono::milliseconds(RELAUNCH_DELAY));
-            system(startCommand.c_str());
+
+            try { system(startCommand.c_str()); }
+            catch (const std::exception& e) { }
+
+            std::ofstream errorLogFile;
+            errorLogFile.open ("LaunchLog.txt", std::ios::app);
+            errorLogFile << "pId : " << pId << "\n";
+            errorLogFile.close();
         }
         std::this_thread::sleep_for(std::chrono::milliseconds(WAIT_DELAY));
     }
